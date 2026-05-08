@@ -246,3 +246,27 @@ CPP11实现
 Linux高性能服务器编程，游双著.
 
 感谢以下朋友的PR和帮助: [@RownH](https://github.com/RownH)，[@mapleFU](https://github.com/mapleFU)，[@ZWiley](https://github.com/ZWiley)，[@zjuHong](https://github.com/zjuHong)，[@mamil](https://github.com/mamil)，[@byfate](https://github.com/byfate)，[@MaJun827](https://github.com/MaJun827)，[@BBLiu-coder](https://github.com/BBLiu-coder)，[@smoky96](https://github.com/smoky96)，[@yfBong](https://github.com/yfBong)，[@liuwuyao](https://github.com/liuwuyao)，[@Huixxi](https://github.com/Huixxi)，[@markparticle](https://github.com/markparticle).
+
+多语言重构版本
+-------------
+
+为了便于对比不同语言在静态资源服务场景下的实现方式，仓库新增 `polyglot/` 目录，提供 Go、C++17、Rust 和 Python 3 四种轻量实现。它们复用现有 `root/` 页面资源，并保持统一参数：
+
+```bash
+# Go
+make polyglot-go
+./polyglot/go/server --port 9006 --root root
+
+# C++17
+make polyglot-cpp
+./polyglot/cpp/server --port 9006 --root root
+
+# Rust
+make polyglot-rust
+./polyglot/rust/server --port 9006 --root root
+
+# Python 3
+python3 polyglot/python/server.py --port 9006 --root root
+```
+
+这些实现默认监听 `9006` 端口，将 `/` 映射到 `/welcome.html`，支持 `GET`/`HEAD` 静态文件访问，并阻止目录穿越。原始 epoll + MySQL 的 C++ 版本仍通过 `make server` 构建运行。
