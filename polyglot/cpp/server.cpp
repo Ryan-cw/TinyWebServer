@@ -10,9 +10,9 @@
 #include <cstring>
 #include <filesystem>
 #include <iostream>
-#include <sstream>
-#include <string>
-#include <thread>
+include <sstream>
+include <string>
+include <thread>
 
 namespace fs = std::filesystem;
 
